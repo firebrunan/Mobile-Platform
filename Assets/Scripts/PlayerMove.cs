@@ -54,7 +54,7 @@ public class PlayerMove : MonoBehaviour
             spriteRenderer.flipX = false;
             if (IsWallOnRight())
             {
-                direcao = 1;
+                direcao = -1;
             }
         }
         else
@@ -63,7 +63,7 @@ public class PlayerMove : MonoBehaviour
             spriteRenderer.flipX = true;
             if (IsWallOnLeft())
             {
-                direcao = 0;
+                direcao = 1;
             }
         }
         if (rb.velocity.x != 0)
