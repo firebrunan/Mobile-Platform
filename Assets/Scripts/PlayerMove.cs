@@ -14,7 +14,9 @@ public class PlayerMove : MonoBehaviour
     private BoxCollider2D boxCollider2D;
     public LayerMask floorMask;
     public LayerMask wallMask;
-    public int direcao = 0; //0 = esquerda, 1 = direita
+    public int direcao = 0; //0 = parado, 1 = direita, -1 = esquerda
+    public bool paredeEsq;
+    public bool paredeDir;
 
     // Start is called before the first frame update
     void Start()
@@ -29,8 +31,10 @@ public class PlayerMove : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Jump();
+            rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
         }
+
+
     }
 
     private void FixedUpdate()
@@ -38,12 +42,31 @@ public class PlayerMove : MonoBehaviour
         movimento.x = moveSpeed;
         Walking();
         Jumping();
+
+
     }
 
     private void Walking()
     {
-
-        if (rb.angularVelocity != 0)
+        if (direcao >= 0)
+        {
+            rb.velocity = new Vector2(moveSpeed, -3f);
+            spriteRenderer.flipX = false;
+            if (IsWallOnRight())
+            {
+                direcao = 1;
+            }
+        }
+        else
+        {
+            rb.velocity = new Vector2(-moveSpeed, -3f);
+            spriteRenderer.flipX = true;
+            if (IsWallOnLeft())
+            {
+                direcao = 0;
+            }
+        }
+        if (rb.velocity.x != 0)
         {
             anim.SetBool("taCorrendo", true);
         }
@@ -51,30 +74,10 @@ public class PlayerMove : MonoBehaviour
         {
             anim.SetBool("taCorrendo", false);
         }
-
-        if (direcao == 0)
-        {
-            transform.Translate(movimento * Time.fixedDeltaTime);
-            spriteRenderer.flipX = false;
-            if (IsWallOnRight())
-                direcao = 1;
-        }
-        else if (direcao == 1)
-        {
-            transform.Translate(-movimento * Time.fixedDeltaTime);
-            spriteRenderer.flipX = true;
-            if(IsWallOnLeft())
-                direcao = 0;
-        }
+        
+        
     }
 
-    private void Jump()
-    {
-        if (IsGrounded())
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
-        }
-    }
 
     public void Jumping()
     {
@@ -94,23 +97,15 @@ public class PlayerMove : MonoBehaviour
         return hit.collider != null;
     }
 
-    private bool IsWallOnLeft()
+    public bool IsWallOnLeft()
     {
         RaycastHit2D hit = Physics2D.Raycast(boxCollider2D.bounds.center, Vector2.left, boxCollider2D.bounds.extents.x + 0.5f, wallMask);
         return hit.collider != null;
     }
 
-    private bool IsWallOnRight()
+    public bool IsWallOnRight()
     {
-        RaycastHit2D hit = Physics2D.Raycast(boxCollider2D.bounds.center, Vector2.right, boxCollider2D.bounds.extents.x + 0.5f, wallMask);
+        RaycastHit2D hit = Physics2D.Raycast(boxCollider2D.bounds.center, Vector2.right, boxCollider2D.bounds.extents.x - 0.5f, wallMask);
         return hit.collider != null;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider != null && CompareTag("floor"))
-        {
-
-        }
     }
 }
