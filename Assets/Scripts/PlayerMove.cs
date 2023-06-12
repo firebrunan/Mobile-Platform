@@ -8,7 +8,6 @@ public class PlayerMove : MonoBehaviour
     private Vector2 movimento;
     public float moveSpeed;
     public float jumpHeight;
-    private float direction;
     public Animator anim;
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D boxCollider2D;
