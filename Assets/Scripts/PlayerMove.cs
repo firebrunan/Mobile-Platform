@@ -28,7 +28,7 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
         }
@@ -39,29 +39,25 @@ public class PlayerMove : MonoBehaviour
     private void FixedUpdate()
     {
         movimento.x = moveSpeed;
-        Walking();
-        Jumping();
-
-
-    }
-
-    private void Walking()
-    {
         if (direcao >= 0)
         {
-            rb.velocity = new Vector2(moveSpeed, -3f);
+            movimento.x = moveSpeed;
+            rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
             spriteRenderer.flipX = false;
             if (IsWallOnRight())
             {
+                paredeDir=true;
                 direcao = -1;
             }
         }
         else
         {
-            rb.velocity = new Vector2(-moveSpeed, -3f);
+            movimento.x = -moveSpeed;
+            rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
             spriteRenderer.flipX = true;
             if (IsWallOnLeft())
             {
+                paredeEsq=true;
                 direcao = 1;
             }
         }
@@ -73,9 +69,12 @@ public class PlayerMove : MonoBehaviour
         {
             anim.SetBool("taCorrendo", false);
         }
-        
-        
+
+        Jumping();
+
+
     }
+
 
 
     public void Jumping()
@@ -96,15 +95,15 @@ public class PlayerMove : MonoBehaviour
         return hit.collider != null;
     }
 
-    public bool IsWallOnLeft()
-    {
-        RaycastHit2D hit = Physics2D.Raycast(boxCollider2D.bounds.center, Vector2.left, boxCollider2D.bounds.extents.x + 0.5f, wallMask);
-        return hit.collider != null;
-    }
+   public bool IsWallOnLeft()
+{
+    RaycastHit2D hit = Physics2D.Raycast(boxCollider2D.bounds.center, Vector2.left, boxCollider2D.bounds.extents.x + 0.1f, wallMask);
+    return hit.collider != null;
+}
 
-    public bool IsWallOnRight()
-    {
-        RaycastHit2D hit = Physics2D.Raycast(boxCollider2D.bounds.center, Vector2.right, boxCollider2D.bounds.extents.x - 0.5f, wallMask);
-        return hit.collider != null;
-    }
+public bool IsWallOnRight()
+{
+    RaycastHit2D hit = Physics2D.Raycast(boxCollider2D.bounds.center, Vector2.right, boxCollider2D.bounds.extents.x + 0.1f, wallMask);
+    return hit.collider != null;
+}
 }
