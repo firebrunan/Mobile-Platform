@@ -800,8 +800,8 @@ GameObject:
   - component: {fileID: 413455642}
   - component: {fileID: 413455641}
   - component: {fileID: 413455640}
-  - component: {fileID: 413455639}
   - component: {fileID: 413455638}
+  - component: {fileID: 413455639}
   m_Layer: 0
   m_Name: Player (1)
   m_TagString: Untagged
@@ -822,8 +822,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  jumpHeight: 50
+  jumpHeight: 15
   anim: {fileID: 0}
+  boxCollider2D: {fileID: 413455639}
   floorMask:
     serializedVersion: 2
     m_Bits: 8
@@ -833,8 +834,8 @@ MonoBehaviour:
   direcao: 0
   paredeEsq: 0
   paredeDir: 0
---- !u!70 &413455639
-CapsuleCollider2D:
+--- !u!61 &413455639
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -846,9 +847,19 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.6, y: 0.9}
-  m_Direction: 0
+  m_Offset: {x: -0.0111528635, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.1561391, y: 1}
+  m_EdgeRadius: 0
 --- !u!50 &413455640
 Rigidbody2D:
   serializedVersion: 4
@@ -2863,7 +2874,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.05275552}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2874,7 +2885,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.105511}
   m_EdgeRadius: 0
 --- !u!1 &1590986175
 GameObject:
@@ -3832,7 +3843,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.01633501}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3843,7 +3854,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.0326699}
   m_EdgeRadius: 0
 --- !u!1 &2139245964
 GameObject:
