@@ -73,10 +73,24 @@ public class PlayerMove : MonoBehaviour
 
     public void Jump()
     {
-        if (Input.GetMouseButtonDown(0) && IsGrounded())
+
+        foreach (Touch touch in Input.touches)
+        {
+            if (touch.phase == TouchPhase.Began)
+            {
+                Ray ray = Camera.main.ScreenPointToRay(touch.position);
+                // construct a ray from the current touch coordinates Ray ray = Camera.main.ScreenPointToRay(touch.position);
+                if (Physics.Raycast(ray))
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+                }
+            }
+        }
+
+        /*if (Input.GetMouseButtonDown(0) && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
-        }
+        }*/
         /* if (!IsGrounded())
          {
              anim.SetBool("taPulando", true);

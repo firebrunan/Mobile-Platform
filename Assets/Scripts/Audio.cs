@@ -32,12 +32,27 @@ public class Audio : MonoBehaviour
         audioSource.loop = true;
         audioSource.Play();
 
-        if (Input.GetMouseButtonDown(0) && IsGrounded())
+        foreach (Touch touch in Input.touches)
+        {
+            if (touch.phase == TouchPhase.Began)
+            {
+                Ray ray = Camera.main.ScreenPointToRay(touch.position);
+                // construct a ray from the current touch coordinates Ray ray = Camera.main.ScreenPointToRay(touch.position);
+                if (Physics.Raycast(ray))
+                {
+                    audioSource = GetComponent<AudioSource>();
+                    audioSource.clip = Jump;
+                    audioSource.Play();
+                }
+            }
+        }
+
+        /*if (Input.GetMouseButtonDown(0) && IsGrounded())
         {
             audioSource = GetComponent<AudioSource>();
             audioSource.clip = Jump;
             audioSource.Play();
-        }
+        }*/
     }
 
     public bool IsGrounded()

@@ -14,7 +14,19 @@ public class Replay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
-            SceneManager.LoadScene("SampleScene");
+        foreach (Touch touch in Input.touches)
+        {
+            if (touch.phase == TouchPhase.Began)
+            {
+                Ray ray = Camera.main.ScreenPointToRay(touch.position);
+                // construct a ray from the current touch coordinates Ray ray = Camera.main.ScreenPointToRay(touch.position);
+                if (Physics.Raycast(ray))
+                {
+                    SceneManager.LoadScene("SampleScene");
+                }
+            }
+        }
+                //if(Input.GetMouseButtonDown(0))
+                //
     }
 }
