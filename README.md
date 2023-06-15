@@ -3,25 +3,25 @@
 ## Status do Projeto:⚠️ Espera 
 
 ## Tópicos
-🔹 Descrição do projeto 
+🔹 Descrição do projeto: 
 Um jogo curto e casual em que o personagem está constantemente indo da direita para a esquerda e vice-versa, tudo o que o jogador precisa fazer é fazer ele pular para escalar até sua casa no topo. 
 
-🔹 Funcionalidades
+🔹 Funcionalidades:
 o jogador pode clicar/tocar na tela para fazer o personagem subir até o objetivo no topo.
 
-🔹 Distribuição
+🔹 Distribuição:
 Google Play, Apkpure
 
-🔹 Testes realizados
+🔹 Testes realizados:
 Jogo funcionando perfeitamente no PC
 
-🔹 Linguagens, dependências e libs utilizadas
+🔹 Linguagens, dependências e libs utilizadas:
 C# e as bibliotecas basicas da Unity foram usadas
 
-🔹 Desenvolvedores/Contribuintes
+🔹 Desenvolvedores/Contribuintes:
 Bruno de Magalhães Moia.
 
-🔹 Informações Extras
+🔹 Informações Extras:
 Splash Screen presente. Assets disponibilizados por Goldmetal e Ansimuz na Unity Assets Store
 
 
