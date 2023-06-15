@@ -22,7 +22,7 @@ C# e as bibliotecas basicas da Unity foram usadas
 Bruno de Magalhães Moia.
 
 🔹 Informações Extras
-Splash Screen adicionada. Assets disponibilizados por Goldmetal e Ansimuz na Unity Assets Store
+Splash Screen presente. Assets disponibilizados por Goldmetal e Ansimuz na Unity Assets Store
 
 
 ...
@@ -40,18 +40,19 @@ Descrição breve do projeto compondo um paragrafo ou dois.
 
 ✔️  Pular com o clique do mouse
 
-⚠️ Pular com toque do celular (não testado)
+✔️ Pular com toque do celular
 
-❌ Build com defeito
+✔️ Build com defeito
 
 ## Distribuição
 Link para teste da versão disponibilizada.
 
 ## Pré-requisitos ⚠️    
-Versão do Android; 
-SDK; 
+Android com 20MB de memória
+SDK: API 7 
 Aparelho utilizado para testes.
 - Computador com Unity 2020.3.21f1.
+- Moto G 5G
 
 ## Como rodar a aplicação 
 Apenas baixe o jogo e abra no celular. O único controle é o toque na tela.
@@ -66,7 +67,7 @@ Jogo testado no computador funcionando bem
 C# e as bibliotecas da Unity Engine
 
 ## Resolvendo Problemas 
-Resolvidos bugs e dificuldades com o código para fazer o movimento do personagem. Infelizmente atualmente com problema para fazer a build do jogo.
+Resolvidos bugs e dificuldades com o código para fazer o movimento do personagem. Infelizmente atualmente com problema para fazer a build do jogo. Jogo funciona para Android.
 
 
 ## Desenvolvedores/Contribuintes:
