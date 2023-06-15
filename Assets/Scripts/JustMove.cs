@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMove : MonoBehaviour
+public class JustMove : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Vector2 movimento;
@@ -13,6 +13,7 @@ public class PlayerMove : MonoBehaviour
     public BoxCollider2D boxCollider2D;
     public LayerMask floorMask;
     public LayerMask wallMask;
+    public LayerMask playerMask;
     public int direcao; //0 = parado, 1 = direita, -1 = esquerda
     public bool paredeEsq;
     public bool paredeDir;
@@ -27,8 +28,6 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
-        Jump();
-
 
     }
 
@@ -40,9 +39,9 @@ public class PlayerMove : MonoBehaviour
             movimento.x = moveSpeed;
             rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
             spriteRenderer.flipX = false;
-            if (IsWallOnRight())
+            if (IsWallOnRight() || IsPlayerOnRight())
             {
-                paredeDir=true;
+                paredeDir = true;
                 direcao = -1;
             }
         }
@@ -51,9 +50,9 @@ public class PlayerMove : MonoBehaviour
             movimento.x = -moveSpeed;
             rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
             spriteRenderer.flipX = true;
-            if (IsWallOnLeft())
+            if (IsWallOnLeft() || IsPlayerOnLeft())
             {
-                paredeEsq=true;
+                paredeEsq = true;
                 direcao = 1;
             }
         }
@@ -71,31 +70,14 @@ public class PlayerMove : MonoBehaviour
 
 
 
-    public void Jump()
-    {
-        if (Input.GetMouseButtonDown(0) && IsGrounded())
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
-        }
-        /* if (!IsGrounded())
-         {
-             anim.SetBool("taPulando", true);
-         }
-         else
-         {
-             anim.SetBool("taPulando", false);
-         }*/
-    }
-
-    public bool IsGrounded()
-    {
-        RaycastHit2D hit = Physics2D.Raycast(boxCollider2D.bounds.center, Vector2.down, boxCollider2D.bounds.extents.y + 0.5f, floorMask);
-        return hit.collider != null;
-    }
-
     public bool IsWallOnLeft()
     {
         RaycastHit2D hit = Physics2D.Raycast(boxCollider2D.bounds.center, Vector2.left, boxCollider2D.bounds.extents.x + 0.5f, wallMask);
+        return hit.collider != null;
+    }
+    public bool IsPlayerOnLeft()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(boxCollider2D.bounds.center, Vector2.left, boxCollider2D.bounds.extents.x + 0.5f, playerMask);
         return hit.collider != null;
     }
 
@@ -104,4 +86,10 @@ public class PlayerMove : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(boxCollider2D.bounds.center, Vector2.right, boxCollider2D.bounds.extents.x + 0.5f, wallMask);
         return hit.collider != null;
     }
+    public bool IsPlayerOnRight()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(boxCollider2D.bounds.center, Vector2.right, boxCollider2D.bounds.extents.x + 0.5f, playerMask);
+        return hit.collider != null;
+    }
 }
+
