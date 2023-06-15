@@ -8,7 +8,7 @@ public class PlayerMove : MonoBehaviour
     private Vector2 movimento;
     public float moveSpeed;
     public float jumpHeight;
-    //public Animator anim;
+    public Animator anim;
     private SpriteRenderer spriteRenderer;
     public BoxCollider2D boxCollider2D;
     public LayerMask floorMask;
@@ -16,18 +16,21 @@ public class PlayerMove : MonoBehaviour
     public int direcao; //0 = parado, 1 = direita, -1 = esquerda
     public bool paredeEsq;
     public bool paredeDir;
+    AudioSource audioSource;
+    public AudioClip Jump;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         direcao = 0;
     }
 
     private void Update()
     {
-        Jump();
+        Jumping();
 
 
     }
@@ -57,48 +60,53 @@ public class PlayerMove : MonoBehaviour
                 direcao = 1;
             }
         }
-        /*if (rb.velocity.x != 0)
+        if (rb.velocity.x != 0)
         {
             anim.SetBool("taCorrendo", true);
         }
         else
         {
             anim.SetBool("taCorrendo", false);
-        }*/
+        }
 
 
     }
 
 
 
-    public void Jump()
+    public void Jumping()
     {
 
         foreach (Touch touch in Input.touches)
         {
-            if (touch.phase == TouchPhase.Began)
+            if (touch.phase == TouchPhase.Began && IsGrounded())
             {
                 Ray ray = Camera.main.ScreenPointToRay(touch.position);
                 // construct a ray from the current touch coordinates Ray ray = Camera.main.ScreenPointToRay(touch.position);
                 if (Physics.Raycast(ray))
                 {
                     rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+                    audioSource.clip = Jump;
+                    audioSource.Play();
                 }
             }
         }
 
-        /*if (Input.GetMouseButtonDown(0) && IsGrounded())
+        if (Input.GetMouseButtonDown(0) && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
-        }*/
-        /* if (!IsGrounded())
+            audioSource.clip = Jump;
+            audioSource.Play();
+        }
+
+        if (!IsGrounded())
          {
              anim.SetBool("taPulando", true);
          }
          else
          {
              anim.SetBool("taPulando", false);
-         }*/
+         }
     }
 
     public bool IsGrounded()

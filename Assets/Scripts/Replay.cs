@@ -26,7 +26,9 @@ public class Replay : MonoBehaviour
                 }
             }
         }
-                //if(Input.GetMouseButtonDown(0))
-                //
+        if (Input.GetMouseButtonDown(0))
+        {
+            SceneManager.LoadScene("SampleScene");
+        }
     }
 }
