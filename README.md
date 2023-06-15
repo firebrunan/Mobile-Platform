@@ -32,7 +32,9 @@ Splash Screen adicionada. Assets disponibilizados por Goldmetal e Ansimuz na Uni
 Descrição breve do projeto compondo um paragrafo ou dois.
 
 ## Funcionalidades ⚙️
-✔️ Funcionalidade 1
+✔️ Vitória ao encostar na porta da casa
+
+✔️ Retornar à tela de jogo após a tela de vitória
 
 ✔️  Personagem andando automaticamente entre paredes
 
