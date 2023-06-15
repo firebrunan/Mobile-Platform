@@ -20,7 +20,6 @@ C# e as bibliotecas basicas da Unity foram usadas
 
 🔹 Desenvolvedores/Contribuintes
 Bruno de Magalhães Moia.
-Goldmetal na Unity Assets Store
 
 🔹 Informações Extras
 Splash Screen adicionada. Assets disponibilizados por Goldmetal e Ansimuz na Unity Assets Store
