@@ -29,7 +29,7 @@ Splash Screen presente. Assets disponibilizados por Goldmetal e Ansimuz na Unity
 
 
 ## Descrição do projeto
-Descrição breve do projeto compondo um paragrafo ou dois.
+Nesse jogo você deve pular e escalar até entrar em sua casa.
 
 ## Funcionalidades ⚙️
 ✔️ Vitória ao encostar na porta da casa
@@ -45,7 +45,7 @@ Descrição breve do projeto compondo um paragrafo ou dois.
 ✔️ Build com defeito
 
 ## Distribuição
-Link para teste da versão disponibilizada.
+[Link para teste da versão disponibilizada.](https://apkpure.com/p/com.BrrrGames.Ascenso)
 
 ## Pré-requisitos ⚠️    
 Android com 20MB de memória
