@@ -1,6 +1,6 @@
 # Ascensão
 ## Versão: 1.0 
-## Status do Projeto:⚠️ Espera 
+## Status do Projeto:✔️ Pronto
 
 ## Tópicos
 🔹 Descrição do projeto: 
